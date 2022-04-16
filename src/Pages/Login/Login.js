@@ -24,7 +24,7 @@ const Login = () => {
                 <Form.Control type="password" placeholder="Password" />
               </Form.Group>
               <div className="text-center">
-                <Button className="w-100  ">Login</Button>
+                <Button className="w-100  mt-4">Login</Button>
               </div>
             </Form>
             <p className="fs-6 mt-4 text-center">You are new? <Link to='/signup'>Signup</Link></p>
