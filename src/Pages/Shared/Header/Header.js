@@ -7,7 +7,7 @@ import './Header.css';
 const Header = () => {
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar sticky="top" collapseOnSelect  bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
               <img width={60} src={logo} alt="" />
@@ -20,7 +20,7 @@ const Header = () => {
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/'>Home</CustomLink>
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/about'>About</CustomLink>
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/service'>Service</CustomLink>
-              <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/features'>features</CustomLink>
+              <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/features'>Features</CustomLink>
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/login'>login</CustomLink>
             </Nav>
           </Navbar.Collapse>

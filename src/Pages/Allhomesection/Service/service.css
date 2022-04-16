@@ -1,0 +1,14 @@
+.service-btn {
+  border: none;
+  background-color: #c1d445;
+  padding: 10px 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.4s;
+}
+.service-btn:hover {
+  background-color: #fff;
+  color: #c1d445;
+  border: 2px solid #c1d445;
+}
