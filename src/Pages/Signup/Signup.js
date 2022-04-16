@@ -2,12 +2,22 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../firebase.init";
 
 
 const Signup = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    let navigate = useNavigate();
+    let location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+  if(user){
+    navigate(from, { replace: true });
+    toast("login successful")
+  }
   return (
     <div className="mt-5">
       <div className="container">
@@ -61,6 +71,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
+        <ToastContainer></ToastContainer>
       </div>
     </div>
   );

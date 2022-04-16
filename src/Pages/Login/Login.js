@@ -1,12 +1,28 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import auth from "../../firebase.init";
 import "./Login.css";
 
+
 const Login = () => {
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    let navigate = useNavigate();
+    let location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+  if(user){
+    navigate(from, { replace: true });
+    toast("welcome back")
+  }
+
   return (
     <div className="mx-auto mt-5">
+        <ToastContainer></ToastContainer>
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-md-6 mx-auto form-container">
@@ -41,7 +57,7 @@ const Login = () => {
             </div>
             <div className="text-center">
               <FaFacebook className="icon text-primary mx-2"></FaFacebook>
-              <FaGoogle className="icon google-Icon"></FaGoogle>
+              <FaGoogle onClick={()=>signInWithGoogle()} className="icon google-Icon"></FaGoogle>
             </div>
           </div>
         </div>
