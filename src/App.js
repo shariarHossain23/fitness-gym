@@ -5,6 +5,7 @@ import ServiceDetail from './Pages/Allhomesection/ServiceDetails/ServiceDetail';
 import Home from './Pages/Home/Home';
 import Fotter from './Pages/Shared/Fotter/Fotter';
 import Header from './Pages/Shared/Header/Header';
+import Notfound from './Pages/Shared/Notfound/Notfound';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
       <Route path='/' element={<Home></Home>}></Route>
       <Route path="/servicedetail/:id" element={<ServiceDetail></ServiceDetail>}></Route>
+      <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
       <Fotter></Fotter>
     </div>
