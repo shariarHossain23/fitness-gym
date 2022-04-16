@@ -1,9 +1,13 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+
 
 const Signup = () => {
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   return (
     <div className="mt-5">
       <div className="container">
@@ -53,7 +57,7 @@ const Signup = () => {
             </div>
             <div className="text-center">
               <FaFacebook className="icon text-primary mx-2"></FaFacebook>
-              <FaGoogle className="icon google-Icon"></FaGoogle>
+              <FaGoogle onClick={()=> signInWithGoogle()} className="icon google-Icon"></FaGoogle>
             </div>
           </div>
         </div>
