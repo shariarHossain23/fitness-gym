@@ -1,0 +1,10 @@
+.form-container {
+  background: #e0e0e0;
+  box-shadow: 49px 49px 98px #bebebe, -49px -49px 98px #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+}
+.form-container input {
+  outline: none;
+  border-radius: 5px;
+}
