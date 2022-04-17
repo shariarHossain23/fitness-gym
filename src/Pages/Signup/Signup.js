@@ -14,8 +14,13 @@ import auth from "../../firebase.init";
 
 const Signup = () => {
   const [user, loading, error] = useAuthState(auth);
+  
+  // google
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+
+    // create email and password
+    
   const [createUserWithEmailAndPassword, emailuser, emailloading, emailerror] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [displayName, setDisplayName] = useState('');
@@ -24,7 +29,8 @@ const Signup = () => {
 
   const [toggle, setToggle] = useState(false);
 
-  // email and password submit
+  // email and password create
+  
   const [userInfo, setUserinfo] = useState({
     email: "",
     password: "",
@@ -40,7 +46,6 @@ const Signup = () => {
   const handleName = (e) => {
     setDisplayName(e.target.value)
   };
-  console.log(user);
   const handleEmail = (e) => {
     const validEmail = /.+@[^@]+\.[^@]{2,}$/.test(e.target.value);
     if (validEmail) {
@@ -82,12 +87,12 @@ const Signup = () => {
     if(emailerror){
       switch(emailerror?.code){
         case"auth/email-already-in-use":
-        setInputError({...inputError,otherError:"Email already exist"})
+        setInputError({...inputError,otherError:"Email already use"})
         break;
       }
     }
   },[emailerror])
-  console.log(emailerror);
+  
   // redirect
   let navigate = useNavigate();
   let location = useLocation();
@@ -104,6 +109,7 @@ const Signup = () => {
       <div className="container">
         <div className="row">
           <div className="col-sm-6 col-md-6 mx-auto form-container">
+            <h1 className="text-center">Signup</h1>
             <Form onClick={handleSignup}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Your Name</Form.Label>
