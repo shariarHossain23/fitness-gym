@@ -59,16 +59,18 @@ const Login = () => {
 
     // error handleing
   };
-  const handleResetPass = (e) => {
-    sendPasswordResetEmail(userInfo.email);
-    // toast.success("send mail")
-  };
-  useEffect(() => {
-    if (resetError?.message) {
+  const handleResetPass = async (e) => {
+  //  if (resetError?.message.includes("MISSING_EMAIL")) {
+  //     alert("hello")
+  //   }
+      sendPasswordResetEmail(userInfo.email);
+    
+    if(resetError?.message.includes("auth/missing-email")){
       console.log("hello");
     }
-  }, [errorEmail]);
-  console.log(resetError?.message);
+  };
+ console.log(resetError)
+  // console.log(resetError?.message);
   useEffect(() => {
     if (errorEmail) {
       switch (errorEmail?.code) {
