@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import About from "./Pages/Allhomesection/About/About";
+import Blogs from "./Pages/Allhomesection/Blogs/Blogs";
 import Ourservice from "./Pages/Allhomesection/Ourservice/Ourservice";
 import ServiceDetail from "./Pages/Allhomesection/ServiceDetails/ServiceDetail";
 import Home from "./Pages/Home/Home";
@@ -27,6 +29,8 @@ function App() {
           }
         ></Route>
         <Route path="/services" element={<Ourservice></Ourservice>}></Route>
+        <Route path="/about"element={<About></About>}></Route>
+        <Route path="/blogs"element={<Blogs></Blogs>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
         <Route path="*" element={<Notfound></Notfound>}></Route>

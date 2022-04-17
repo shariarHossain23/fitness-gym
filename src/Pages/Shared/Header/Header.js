@@ -25,10 +25,10 @@ const Header = () => {
               className=" ms-auto header"
             >
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/'>Home</CustomLink>
-              <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/about'>About</CustomLink>
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/services'>Services</CustomLink>
               
-              <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/features'>Features</CustomLink>
+              <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/blogs'>Blogs</CustomLink>
+              <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/about'>About</CustomLink>
               {user? <button className="btn btn-link fs-6 fw-bold text-decoration-none text-muted log-out-btn" onClick={logout}>Logout</button>:<CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/login'>login</CustomLink>}
             </Nav>
           </Navbar.Collapse>
