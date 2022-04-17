@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Ourservice from "./Pages/Allhomesection/Ourservice/Ourservice";
 import ServiceDetail from "./Pages/Allhomesection/ServiceDetails/ServiceDetail";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
@@ -25,6 +26,7 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+        <Route path="/services" element={<Ourservice></Ourservice>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<Signup></Signup>}></Route>
         <Route path="*" element={<Notfound></Notfound>}></Route>
