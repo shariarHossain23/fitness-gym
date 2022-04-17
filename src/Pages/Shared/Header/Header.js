@@ -14,7 +14,7 @@ const Header = () => {
   };
   return (
     <div className="sticky-top">
-      <Navbar sticky="top"collapseOnSelect  bg="light" expand="lg">
+      <Navbar collapseOnSelect  bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
               <img width={60} src={logo} alt="" />
@@ -25,10 +25,9 @@ const Header = () => {
               className=" ms-auto header"
             >
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/'>Home</CustomLink>
-              <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/services'>Services</CustomLink>
-              
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/blogs'>Blogs</CustomLink>
               <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/about'>About</CustomLink>
+              <CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/checkout'>Checkout</CustomLink>
               {user? <button className="btn btn-link fs-6 fw-bold text-decoration-none text-muted log-out-btn" onClick={logout}>Logout</button>:<CustomLink className="mx-2 text-decoration-none text-muted fs-6 fw-bold" to='/login'>login</CustomLink>}
             </Nav>
           </Navbar.Collapse>

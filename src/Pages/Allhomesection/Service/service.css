@@ -5,14 +5,14 @@
   font-size: 20px;
   font-weight: 600;
   color: #fff;
-  transition: 0.4s;
+  transition: all ease-in 0.4s;
 }
-.service-btn:hover {
+.service-btn:hover.service-details-btn {
   background-color: #fff;
   color: #c1d445;
   border: 2px solid #c1d445;
 }
 .card-item:hover {
-  transform: translateY(-20px);
-  transition: 0.5s;
+  /* transform: translateY(-20px);
+  transition: 0.5s; */
 }
