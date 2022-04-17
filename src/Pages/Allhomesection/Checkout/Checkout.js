@@ -3,7 +3,6 @@ import { Button, Form } from 'react-bootstrap';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
-import logo from '../../../images/gym.jpg';
 
 
 const Checkout = () => {
@@ -40,7 +39,7 @@ const Checkout = () => {
           <ToastContainer />
           <div className="container">
             <div className="row gx-5 d-flex align-items-center">
-              <div className="col-sm-6 col-md-6 form-container">
+              <div className="col-sm-6 col-md-6 mx-auto form-container">
                 <h1 className="text-center">Please fill the form</h1>
                 <Form>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -85,9 +84,6 @@ const Checkout = () => {
                     </Button>
                   </div>
                 </Form>
-              </div>
-              <div className="col-md-6 text-center">
-                  <img  className='img-fluid mx-auto ' src={logo} alt="" />
               </div>
             </div>
           </div>
