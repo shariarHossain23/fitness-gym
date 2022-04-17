@@ -12,3 +12,7 @@
   color: #c1d445;
   border: 2px solid #c1d445;
 }
+.card-item:hover {
+  transform: translateY(-20px);
+  transition: 0.5s;
+}

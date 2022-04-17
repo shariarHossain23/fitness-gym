@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useSignInWithFacebook,
   useSignInWithGoogle,
   useUpdateProfile
 } from "react-firebase-hooks/auth";
@@ -18,7 +19,8 @@ const Signup = () => {
   // google
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
-
+  //   facebook
+  const [signInWithFacebook, fbuser, fbloading, fberror] = useSignInWithFacebook(auth);
     // create email and password
     
   const [createUserWithEmailAndPassword, emailuser, emailloading, emailerror] =
@@ -178,7 +180,7 @@ const Signup = () => {
               ></div>
             </div>
             <div className="text-center">
-              <FaFacebook className="icon text-primary mx-2"></FaFacebook>
+              <FaFacebook onClick={()=> signInWithFacebook()} className="icon text-primary mx-2"></FaFacebook>
               <FaGoogle
                 onClick={() => signInWithGoogle()}
                 className="icon google-Icon"

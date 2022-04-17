@@ -4,6 +4,7 @@ import {
   useAuthState,
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
+  useSignInWithFacebook,
   useSignInWithGoogle
 } from "react-firebase-hooks/auth";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
@@ -18,7 +19,8 @@ const Login = () => {
   // google
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
-
+  // facebook
+  const [signInWithFacebook, fbuser, fbloading, fberror] = useSignInWithFacebook(auth);
   // reset
   const [sendPasswordResetEmail, sending, resetError] =
     useSendPasswordResetEmail(auth);
@@ -60,16 +62,14 @@ const Login = () => {
     // error handleing
   };
   const handleResetPass = async (e) => {
-  //  if (resetError?.message.includes("MISSING_EMAIL")) {
-  //     alert("hello")
-  //   }
+    if(userInfo.email){
       sendPasswordResetEmail(userInfo.email);
-    
-    if(resetError?.message.includes("auth/missing-email")){
-      console.log("hello");
+      toast("send email")
+    }
+    else{
+      toast("plz enter email")
     }
   };
- console.log(resetError)
   // console.log(resetError?.message);
   useEffect(() => {
     if (errorEmail) {
@@ -101,7 +101,7 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       navigate(from, { replace: true });
-      toast("welcome back");
+      toast.success("welcome back");
     }
   }, [user]);
 
@@ -166,7 +166,7 @@ const Login = () => {
               ></div>
             </div>
             <div className="text-center">
-              <FaFacebook className="icon text-primary mx-2"></FaFacebook>
+              <FaFacebook onClick={()=>signInWithFacebook()} className="icon text-primary mx-2"></FaFacebook>
               <FaGoogle
                 onClick={() => signInWithGoogle()}
                 className="icon google-Icon"

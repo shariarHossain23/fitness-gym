@@ -7,7 +7,7 @@ const Service = ({ serviceItem }) => {
   const { id,name, price, picture, description } = serviceItem;
   const navigate = useNavigate()
   return (
-    <Col md={4} className="gx-5 mt-4">
+    <Col  md={4} className="gx-5 mt-4 card-item">
       <div>
         <img
           className="mx-auto"
@@ -23,7 +23,7 @@ const Service = ({ serviceItem }) => {
         <p className="text-muted fs-5">
           <small>{description}</small>
         </p>
-        <button onClick={() => navigate(`/Servicedetail/${id}`)} className="service-btn">Checkout</button>
+        <button onClick={() => navigate(`/checkout/${id}`)} className="service-btn">Checkout</button>
       </div>
     </Col>
   );
