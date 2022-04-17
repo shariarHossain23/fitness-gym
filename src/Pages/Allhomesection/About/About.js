@@ -11,7 +11,7 @@ const About = () => {
           <Col md={6}>
             {" "}
             <div className="text-center protfolio">
-              <img className="text-center"  src={logo} alt="" />
+              <img className="text-center img-fluid"  src={logo} alt="" />
             </div>
           </Col>
           <Col md={6}>
