@@ -18,6 +18,7 @@ const Signup = () => {
     useSignInWithGoogle(auth);
   const [createUserWithEmailAndPassword, emailuser, emailloading, emailerror] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [displayName, setDisplayName] = useState('');
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
 
@@ -25,28 +26,28 @@ const Signup = () => {
 
   // email and password submit
   const [userInfo, setUserinfo] = useState({
-    name: "",
     email: "",
     password: "",
     confirmPass: "",
   });
   const [inputError, setInputError] = useState({
-    name: "",
     email: "",
     password: "",
     confirmPass: "",
+    otherError:''
   });
 
   const handleName = (e) => {
-    setUserinfo({ ...userInfo, name: e.target.value });
+    setDisplayName(e.target.value)
   };
+  console.log(user);
   const handleEmail = (e) => {
     const validEmail = /.+@[^@]+\.[^@]{2,}$/.test(e.target.value);
     if (validEmail) {
       setUserinfo({ ...userInfo, email: e.target.value });
-      setInputError({ ...error, email: "" });
+      setInputError({ ...inputError, email: "" });
     } else {
-      setInputError({ ...error, email: "invalid email" });
+      setInputError({ ...inputError, email: "invalid email" });
     }
   };
   const handlePassword = (e) => {
@@ -65,19 +66,28 @@ const Signup = () => {
     const password = userInfo.password;
     if (password === e.target.value) {
       setUserinfo({ ...userInfo, confirmPass: e.target.value });
-      setInputError({ ...error, confirmPass: "" });
+      setInputError({ ...inputError, confirmPass: "" });
     } else {
-      setInputError({ ...error, confirmPass: "don't match password" });
+      setInputError({ ...inputError, confirmPass: "don't match password" });
     }
   };
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     if(userInfo.confirmPass){
-      createUserWithEmailAndPassword(userInfo.email,userInfo.password)
-      toast("successfully signup");
+      await createUserWithEmailAndPassword(userInfo.email,userInfo.password)
     }
+    await updateProfile({ displayName});
   };
-
+  useEffect(()=>{
+    if(emailerror){
+      switch(emailerror?.code){
+        case"auth/email-already-in-use":
+        setInputError({...inputError,otherError:"Email already exist"})
+        break;
+      }
+    }
+  },[emailerror])
+  console.log(emailerror);
   // redirect
   let navigate = useNavigate();
   let location = useLocation();
@@ -142,6 +152,9 @@ const Signup = () => {
                   Signup
                 </Button>
               </div>
+              <Form.Text className="text-danger">
+                  {inputError.otherError}
+                </Form.Text>
             </Form>
             <ToastContainer></ToastContainer>
             <p className="fs-6 mt-4 text-center">
