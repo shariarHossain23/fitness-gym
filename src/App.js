@@ -18,40 +18,39 @@ import Signup from "./Pages/Signup/Signup";
 export const serviceDataContext = React.createContext();
 
 function App() {
-  const [services,setServices] = useState([])
-  useEffect(()=>{
+  const [services, setServices] = useState([]);
+  useEffect(() => {
     fetch("service.json")
-    .then(res => res.json())
-    .then(data => setServices(data))
-  },[])
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
   return (
     <div>
       <Toaster></Toaster>
-      <serviceDataContext.Provider value={[services,setServices]}>
-      <Header></Header>
-      <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/home" element={<Home></Home>}></Route>
-        <Route
-          path="/servicedetail/:id"
-          element={
-            <RequireAuth>
-              <ServiceDetail></ServiceDetail>
-            </RequireAuth>
-          }
-        ></Route>
-        <Route path="/about"element={<About></About>}></Route>
-        <Route path="/blogs"element={<Blogs></Blogs>}></Route>
-        <Route path="/checkout" element={
-          <RequireAuth>
-            <Checkout></Checkout>
-          </RequireAuth>
-        }></Route>
-        <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/signup" element={<Signup></Signup>}></Route>
-        <Route path="*" element={<Notfound></Notfound>}></Route>
-      </Routes>
-      <Fotter></Fotter>
+      <serviceDataContext.Provider value={[services, setServices]}>
+        <Header></Header>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/home" element={<Home></Home>}></Route>
+          <Route
+            path="/servicedetail/:id"
+            element={<ServiceDetail></ServiceDetail>}
+          ></Route>
+          <Route path="/about" element={<About></About>}></Route>
+          <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+          <Route
+            path="/checkout"
+            element={
+              <RequireAuth>
+                <Checkout></Checkout>
+              </RequireAuth>
+            }
+          ></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/signup" element={<Signup></Signup>}></Route>
+          <Route path="*" element={<Notfound></Notfound>}></Route>
+        </Routes>
+        <Fotter></Fotter>
       </serviceDataContext.Provider>
     </div>
   );
